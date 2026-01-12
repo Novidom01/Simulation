@@ -155,7 +155,13 @@ void runMainMenu() {
     do {
         displayMainMenu();
         std::cin >> choice;
-
+        if (!(std::cin >> choice)) {
+            // Очистка флагов ошибок и буфера ввода
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Ошибка! Введите число." << std::endl;
+            continue;
+        }
         // Очистка буфера ввода
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
